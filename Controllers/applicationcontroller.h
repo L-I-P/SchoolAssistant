@@ -1,8 +1,4 @@
 #pragma once
-#include <QObject>
-#include <QPushButton>
-#include <QLabel>
-#include <QMessageBox>
 #include "Controllers/conditiontestcontroller.h"
 #include "Controllers/questionanswertestcontroller.h"
 #include "Views/mainview.h"

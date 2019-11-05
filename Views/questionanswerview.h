@@ -7,9 +7,9 @@
 
 class QuestionAnswerView : public QDialog
 {
-    //Q_OBJECT
 public:
-    QuestionAnswerView();
+    explicit QuestionAnswerView();
+    ~QuestionAnswerView();
     QVBoxLayout& getGlayout();
     QVBoxLayout& getQalayout();
     QLabel& getLabelTimer();

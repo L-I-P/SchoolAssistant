@@ -1,13 +1,13 @@
 #pragma once
 #include <QList>
 #include <QtSql/QSqlQuery>
-#include <QDebug>
+#include <QMessageBox>
 #include "Models/questiontest.h"
 
 class QuestionTestController
 {
 public:
-    QuestionTestController();
+    explicit QuestionTestController();
     QList<QString> getQuestionTest(int NumberTest);
     int getId(QString question);
     QString getCorrectAnswer(int Id);

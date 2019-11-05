@@ -5,6 +5,13 @@ ContextDb::ContextDb()
     connectToDataBase();
 }
 
+ContextDb::~ContextDb()
+{
+    delete nameTestController;
+    delete questionTestController;
+    delete wrongAnswerTestController;
+}
+
 void ContextDb::connectToDataBase()
 {
     db = QSqlDatabase::addDatabase("QMYSQL3");
@@ -25,7 +32,7 @@ void ContextDb::connectToDataBase()
     }
     catch(QString error)//сюда передастся строка
     {
-        qDebug() << error;
+        QMessageBox::critical(nullptr, "Ошибка", error);
     }
 }
 

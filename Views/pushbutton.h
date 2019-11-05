@@ -1,17 +1,18 @@
 #pragma once
 #include <QPushButton>
-#include <QLabel>
+#include <QTextEdit>
 #include <QHBoxLayout>
 
 class PushButton : public QPushButton
 {
 public:
-    PushButton();
+    explicit PushButton();
+    ~PushButton();
     void setText(const QString text);
-    QString text();
     void setMinimumSizeHeight();
+    QString text();
 private:
-    QLabel *label;
+    QTextEdit *textEdit;
     QHBoxLayout *layout;
 
 };

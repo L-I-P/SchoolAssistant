@@ -16,7 +16,7 @@ int NameTestController::getNumberTest(QString name)
             return NumberTest;
         }
     }
-    qDebug() << "Ошибка. Тест не найден.";
+    QMessageBox::critical(nullptr, "Ошибка", "Тест не найден.");
     exit(0);
 }
 

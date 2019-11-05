@@ -5,7 +5,7 @@
 class ConditionTestView : public QDialog
 {
 public:
-    ConditionTestView();
+    explicit ConditionTestView();
     ~ConditionTestView();
     QVBoxLayout& getVLayout();
 private:

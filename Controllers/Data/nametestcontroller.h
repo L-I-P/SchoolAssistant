@@ -1,13 +1,13 @@
 #pragma once
 #include <QList>
-#include <QDebug>
+#include <QMessageBox>
 #include <QtSql/QSqlQuery>
 #include "Models/nametest.h"
 
 class NameTestController
 {
 public:
-    NameTestController();
+    explicit NameTestController();
     int getNumberTest(QString name);
     QList<QString> getNameTest();
     QString getConditionTest(QString name);

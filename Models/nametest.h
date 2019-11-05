@@ -3,7 +3,7 @@
 class NameTest
 {
 public:
-    NameTest();
+    explicit NameTest();
     void setNumberTest(int _NumberTest);
     void setName(QString _Name);
     void setConditionTest(QString _ConditionTest);

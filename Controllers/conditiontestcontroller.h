@@ -7,7 +7,7 @@
 class ConditionTestController : public QObject
 {
 public:
-    ConditionTestController(QString condition);
+    explicit ConditionTestController(QString condition);
     ~ConditionTestController();
 private:
     ConditionTestView *conditionTestView;

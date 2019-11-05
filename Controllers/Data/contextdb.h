@@ -1,13 +1,14 @@
 #pragma once
 #include <QtSql/QSqlDatabase>
-#include <QDebug>
+#include <QMessageBox>
 #include "nametestcontroller.h"
 #include "questiontestcontroller.h"
 #include "wronganswertestcontroller.h"
 class ContextDb
 {
 public:
-    ContextDb();
+    explicit ContextDb();
+    ~ContextDb();
     NameTestController& getNameTestController();
     QuestionTestController& getQuestionTestController();
     WrongAnswerTestController& getWrongAnswerTestController();

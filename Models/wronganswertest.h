@@ -3,7 +3,7 @@
 class WrongAnswerTest
 {
 public:
-    WrongAnswerTest();
+    explicit WrongAnswerTest();
     void setId(int _Id);
     void setQuestion(int _Question);
     void setWrongAnswer(QString _WrongAnswer);

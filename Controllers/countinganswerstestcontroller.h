@@ -1,10 +1,9 @@
 #pragma once
-#include <QObject>
 
 class CountingAnswersTestController
 {
 public:
-    CountingAnswersTestController();
+    explicit CountingAnswersTestController();
     int getCorrectAnswer();
     int getWrongAnswer();
     void increaseCorrectAnswer();

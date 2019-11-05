@@ -2,8 +2,8 @@
 
 QuestionAnswerView::QuestionAnswerView()
 {
-    setMinimumSize(250,300);
-    setMaximumSize(400,600);
+    setMinimumSize(400,400);
+    setMaximumSize(500,700);
     setWindowFlags(Qt::Window | Qt::WindowTitleHint);
 
     glayout = new QVBoxLayout;
@@ -33,6 +33,17 @@ QuestionAnswerView::QuestionAnswerView()
 
     qalayout->setSpacing(15);
     qalayout->setMargin(20);
+}
+
+QuestionAnswerView::~QuestionAnswerView()
+{
+    delete glayout;
+    delete qalayout;
+    delete labelTimer;
+    delete question;
+
+    delete nextQuestion;
+    delete exitTest;
 }
 
 QVBoxLayout& QuestionAnswerView::getGlayout()

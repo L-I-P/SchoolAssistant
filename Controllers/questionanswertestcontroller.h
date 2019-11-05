@@ -1,7 +1,4 @@
 #pragma once
-#include <QObject>
-#include <QPushButton>
-#include <QMessageBox>
 #include "Controllers/Data/contextdb.h"
 #include "Controllers/countinganswerstestcontroller.h"
 #include "Controllers/timercontroller.h"
@@ -12,7 +9,8 @@ class QuestionAnswerTestController : public QObject
 {
     Q_OBJECT
 public:
-    QuestionAnswerTestController(ContextDb& _contextDb, int _NumberTest);
+    explicit QuestionAnswerTestController(ContextDb& _contextDb, int _NumberTest);
+    ~QuestionAnswerTestController();
     void exec();
 public slots:
     void UpdateDateTime();

@@ -66,7 +66,7 @@ int QuestionTestController::getId(QString question)
     }
     if(Id == -1)
     {
-        qDebug() << "Вопрос не найден.";
+        QMessageBox::critical(nullptr, "Ошибка", "Вопрос не найден.");
         exit(0);
     }
 }

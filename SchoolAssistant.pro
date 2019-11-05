@@ -39,6 +39,7 @@ SOURCES += \
         Models/questiontest.cpp \
         Models/wronganswertest.cpp \
         Views/conditiontestview.cpp \
+        Views/helper.cpp \
         Views/mainview.cpp \
         Views/pushbutton.cpp \
         Views/questionanswerview.cpp \
@@ -58,6 +59,7 @@ HEADERS += \
     Models/questiontest.h \
     Models/wronganswertest.h \
     Views/conditiontestview.h \
+    Views/helper.h \
     Views/mainview.h \
     Views/pushbutton.h \
     Views/questionanswerview.h

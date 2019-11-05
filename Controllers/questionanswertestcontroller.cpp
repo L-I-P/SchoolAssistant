@@ -8,6 +8,15 @@ QuestionAnswerTestController::QuestionAnswerTestController(ContextDb& _contextDb
     questionAnswerView->show();
 }
 
+QuestionAnswerTestController::~QuestionAnswerTestController()
+{
+    delete questionAnswerView;
+    delete timerController;
+    delete countingAnswersTestController;
+
+    listPushButtonAnswer.clear();
+}
+
 void QuestionAnswerTestController::exec()
 {
     questionAnswerView->exec();
@@ -57,7 +66,7 @@ void QuestionAnswerTestController::UpdateQuestion()
         {
             PushButton * qpb = new PushButton;
             connect(qpb, SIGNAL(clicked()), this, SLOT(checkResponse()));
-            //qpb->setMinimumSizeHeight();
+            qpb->setMinimumSize(20,60);
             questionAnswerView->getQalayout().addWidget(qpb);
             listPushButtonAnswer.append(qpb);
             qpb->setToolTip("Выберите ответ,\nкоторый считаете правильным.");
@@ -66,6 +75,8 @@ void QuestionAnswerTestController::UpdateQuestion()
         {
             delete listPushButtonAnswer.takeLast();
         }
+        if(!listPushButtonAnswer.isEmpty())
+        {
         if(answer.size() == listPushButtonAnswer.size())
         {
             for(int i = 0; i < listPushButtonAnswer.size(); i++)
@@ -78,6 +89,12 @@ void QuestionAnswerTestController::UpdateQuestion()
         }
         questionAnswerView->getNextQuestion().setEnabled(false);
         questionAnswerView->getExitTest().setEnabled(false);
+        }
+        else
+        {
+            questionAnswerView->getNextQuestion().setEnabled(true);
+            questionAnswerView->getExitTest().setEnabled(true);
+        }
     }
 }
 
@@ -91,7 +108,7 @@ void QuestionAnswerTestController::checkResponse()
     else
     {
         countingAnswersTestController->increaseWrongAnswer();
-        ((PushButton*)sender())->setStyleSheet("background-color: red");
+        ((PushButton*)sender())->setStyleSheet("background-color: red;  border-color: red");
         for(int i = 0; i < listPushButtonAnswer.size(); i++)
         {
             if(listPushButtonAnswer[i]->text() == contextDb.getQuestionTestController().getCorrectAnswer(contextDb.getQuestionTestController().getId(question.first())))

@@ -6,7 +6,7 @@
 class WrongAnswerTestController
 {
 public:
-    WrongAnswerTestController();
+    explicit WrongAnswerTestController();
     QList<QString> getWrongAnswer(int Question);
 private:
     void setWrongAnswerTest();

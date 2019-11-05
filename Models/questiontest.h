@@ -4,7 +4,7 @@
 class QuestionTest
 {
 public:
-    QuestionTest();
+    explicit QuestionTest();
     void setId(int _Id);
     void setNumberTest(int _NumberTest);
     void setQuestion(QString _Question);
