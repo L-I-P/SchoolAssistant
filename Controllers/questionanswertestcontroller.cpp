@@ -14,7 +14,7 @@ QuestionAnswerTestController::~QuestionAnswerTestController()
     delete timerController;
     delete countingAnswersTestController;
 
-    listPushButtonAnswer.clear();
+    listCheckLayoutAnswer.clear();
 }
 
 void QuestionAnswerTestController::exec()
@@ -62,29 +62,29 @@ void QuestionAnswerTestController::UpdateQuestion()
 
     if(contextDb.getQuestionTestController().getCorrectAnswer(contextDb.getQuestionTestController().getId(question.first())) != "")
     {
-        while(answer.size() > listPushButtonAnswer.size())
+        while(answer.size() > listCheckLayoutAnswer.size())
         {
-            PushButton * qpb = new PushButton;
-            connect(qpb, SIGNAL(clicked()), this, SLOT(checkResponse()));
-            qpb->setMinimumSize(20,60);
-            questionAnswerView->getQalayout().addWidget(qpb);
-            listPushButtonAnswer.append(qpb);
-            qpb->setToolTip("Выберите ответ,\nкоторый считаете правильным.");
+            CheckLayout * qpb = new CheckLayout;
+            connect(&qpb->getCheckBox(), SIGNAL(clicked()), this, SLOT(checkResponse()));
+            questionAnswerView->getQalayout().addLayout(qpb);
+            listCheckLayoutAnswer.append(qpb);
+            qpb->getCheckBox().setToolTip("Выберите ответ,\nкоторый считаете правильным.");
         }
-        while(answer.size() < listPushButtonAnswer.size())
+        while(answer.size() < listCheckLayoutAnswer.size())
         {
-            delete listPushButtonAnswer.takeLast();
+            delete listCheckLayoutAnswer.takeLast();
         }
-        if(!listPushButtonAnswer.isEmpty())
+        if(!listCheckLayoutAnswer.isEmpty())
         {
-        if(answer.size() == listPushButtonAnswer.size())
+        if(answer.size() == listCheckLayoutAnswer.size())
         {
-            for(int i = 0; i < listPushButtonAnswer.size(); i++)
+            for(int i = 0; i < listCheckLayoutAnswer.size(); i++)
             {
-                listPushButtonAnswer[i]->setText(answer.takeFirst());
-                listPushButtonAnswer[i]->setMinimumSizeHeight();
-                listPushButtonAnswer[i]->setEnabled(true);
-                listPushButtonAnswer[i]->setStyleSheet("background-color: lightgray;");
+                listCheckLayoutAnswer[i]->setText(answer.takeFirst());
+                listCheckLayoutAnswer[i]->setMinimumSizeHeight();
+                listCheckLayoutAnswer[i]->getCheckBox().setChecked(false);
+                listCheckLayoutAnswer[i]->getCheckBox().setEnabled(true);
+                listCheckLayoutAnswer[i]->getTextEdit().setStyleSheet("background-color: white;");
             }
         }
         questionAnswerView->getNextQuestion().setEnabled(false);
@@ -100,26 +100,34 @@ void QuestionAnswerTestController::UpdateQuestion()
 
 void QuestionAnswerTestController::checkResponse()
 {
-    if(contextDb.getQuestionTestController().getCorrectAnswer(contextDb.getQuestionTestController().getId(question.first())) == ((PushButton*)sender())->text())
+    for(int i = 0; i < listCheckLayoutAnswer.size(); i++)
     {
-        countingAnswersTestController->increaseCorrectAnswer();
-        ((PushButton*)sender())->setStyleSheet("background-color: lightgreen");
-    }
-    else
-    {
-        countingAnswersTestController->increaseWrongAnswer();
-        ((PushButton*)sender())->setStyleSheet("background-color: red;  border-color: red");
-        for(int i = 0; i < listPushButtonAnswer.size(); i++)
+        if(listCheckLayoutAnswer[i]->getCheckBox().isChecked())
         {
-            if(listPushButtonAnswer[i]->text() == contextDb.getQuestionTestController().getCorrectAnswer(contextDb.getQuestionTestController().getId(question.first())))
+        if(contextDb.getQuestionTestController().getCorrectAnswer(contextDb.getQuestionTestController().getId(question.first())) == listCheckLayoutAnswer[i]->text())
+        {
+            countingAnswersTestController->increaseCorrectAnswer();
+            listCheckLayoutAnswer[i]->getTextEdit().setStyleSheet("background-color: lightgreen");
+        }
+        else
+        {
+            countingAnswersTestController->increaseWrongAnswer();
+            listCheckLayoutAnswer[i]->getTextEdit().setStyleSheet("background-color: red;  border-color: red");
+            for(int i = 0; i < listCheckLayoutAnswer.size(); i++)
             {
-                listPushButtonAnswer[i]->setStyleSheet("background-color: lightgreen");
+                if(listCheckLayoutAnswer[i]->text() == contextDb.getQuestionTestController().getCorrectAnswer(contextDb.getQuestionTestController().getId(question.first())))
+                {
+                    listCheckLayoutAnswer[i]->getTextEdit().setStyleSheet("background-color: lightgreen");
+                }
             }
         }
-    }
-    for(int i = 0; i < listPushButtonAnswer.size(); i++)
-    {
-        listPushButtonAnswer[i]->setEnabled(false);
+        for(int i = 0; i < listCheckLayoutAnswer.size(); i++)
+        {
+            listCheckLayoutAnswer[i]->setEnabled(false);
+            listCheckLayoutAnswer[i]->getCheckBox().setEnabled(false);
+        }
+        break;
+        }
     }
     questionAnswerView->getNextQuestion().setEnabled(true);
     questionAnswerView->getExitTest().setEnabled(true);

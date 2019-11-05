@@ -38,10 +38,10 @@ SOURCES += \
         Models/nametest.cpp \
         Models/questiontest.cpp \
         Models/wronganswertest.cpp \
+        Views/checklayout.cpp \
         Views/conditiontestview.cpp \
         Views/helper.cpp \
         Views/mainview.cpp \
-        Views/pushbutton.cpp \
         Views/questionanswerview.cpp \
         main.cpp
 
@@ -58,10 +58,10 @@ HEADERS += \
     Models/nametest.h \
     Models/questiontest.h \
     Models/wronganswertest.h \
+    Views/checklayout.h \
     Views/conditiontestview.h \
     Views/helper.h \
     Views/mainview.h \
-    Views/pushbutton.h \
     Views/questionanswerview.h
 
 # Default rules for deployment.

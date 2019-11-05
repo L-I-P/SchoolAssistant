@@ -3,7 +3,7 @@
 #include "Controllers/countinganswerstestcontroller.h"
 #include "Controllers/timercontroller.h"
 #include "Views/questionanswerview.h"
-#include "Views/pushbutton.h"
+#include "Views/checklayout.h"
 
 class QuestionAnswerTestController : public QObject
 {
@@ -33,5 +33,5 @@ private:
     QList<QString> question;
     QList<QString> answer;
 
-    QList<PushButton*> listPushButtonAnswer;
+    QList<CheckLayout*> listCheckLayoutAnswer;
 };
