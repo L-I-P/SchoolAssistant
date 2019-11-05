@@ -18,7 +18,7 @@ void ContextDb::connectToDataBase()
     db.setHostName("remotemysql.com");
     db.setDatabaseName("RvuBmf8IE1");
     db.setUserName("RvuBmf8IE1");
-    db.setPassword("xowdtXAXkA");
+    db.setPassword("UGADAI");
     db.setConnectOptions();
     try
     {
@@ -30,7 +30,7 @@ void ContextDb::connectToDataBase()
             throw "Ошибка подключения к базе данных";
         }
     }
-    catch(QString error)//сюда передастся строка
+    catch(QString error)
     {
         QMessageBox::critical(nullptr, "Ошибка", error);
     }
