@@ -4,7 +4,7 @@ MainView::MainView()
 {
     setWindowTitle("Школьный помощник");
     setWindowFlags(Qt::Window);
-    setMinimumSize(300,250);
+    setMinimumSize(350,400);
     setMaximumSize(400,600);
     vlayout = new QVBoxLayout();
     QWidget* widget = new QWidget;

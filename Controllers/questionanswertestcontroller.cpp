@@ -4,6 +4,8 @@ QuestionAnswerTestController::QuestionAnswerTestController(ContextDb& _contextDb
 {
     questionAnswerView = new QuestionAnswerView;
     countingAnswersTestController = new CountingAnswersTestController;
+    connect(this, SIGNAL(increaseCorrectAnswer()), countingAnswersTestController, SLOT(increaseCorrectAnswer()));
+    connect(this, SIGNAL(increaseWrongAnswer()), countingAnswersTestController, SLOT(increaseWrongAnswer()));
     InitializationWindow();
     questionAnswerView->show();
 }
@@ -106,12 +108,12 @@ void QuestionAnswerTestController::checkResponse()
         {
         if(contextDb.getQuestionTestController().getCorrectAnswer(contextDb.getQuestionTestController().getId(question.first())) == listCheckLayoutAnswer[i]->text())
         {
-            countingAnswersTestController->increaseCorrectAnswer();
+            increaseCorrectAnswer();
             listCheckLayoutAnswer[i]->getTextEdit().setStyleSheet("background-color: lightgreen");
         }
         else
         {
-            countingAnswersTestController->increaseWrongAnswer();
+            increaseWrongAnswer();
             listCheckLayoutAnswer[i]->getTextEdit().setStyleSheet("background-color: red;  border-color: red");
             for(int i = 0; i < listCheckLayoutAnswer.size(); i++)
             {

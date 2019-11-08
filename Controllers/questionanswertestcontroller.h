@@ -16,9 +16,12 @@ public slots:
     void UpdateDateTime();
     void UpdateQuestion();
     void checkResponse();
+signals:
+    void increaseCorrectAnswer();
+    void increaseWrongAnswer();
 private:
     void InitializationWindow();
-    int getRandomNumber();
+    //int getRandomNumber();
     void InitializationListQuestion();
     void InitializationAnswer();
 private:
